@@ -9,7 +9,7 @@ Chess board
 
 - Position of the Figures and marked Fields
     2 dimensional Array
-    with dictionary - figure, marked_by_white, marked_by_black
+    with dictionary - figure_with_color, marked_by_white, marked_by_black
 
 
 - Whos turn is it?
@@ -36,8 +36,8 @@ Some frontend I'm probably never gonna finish
 Game logic
 
 1. Check if any legal moves are left for player
-    if no and in check -> loose
-    if no and not in check -> draw
+    if no and King in check -> loose
+    if no and King not in check -> draw
     if yes -> 2. 
 
 2. take input of piece to move 
@@ -56,18 +56,33 @@ Game logic
     -> 1. 
 
 
-
-
 Functions:
 
 *1 Show legal move for that piece (postition, type of piece, board)
-    For all:    - in borders
+    For all:    * type
+                * color
+                 
+                - in borders
                 - not in same colored pieces
-                - no checks afterwards
+                - no checks afterwards -> fun *4
     
-    Pawn:       - Forward 2 - if in og row -> set en_peasent = true
-                - Forward 1 - if no pieces in front
+    Pawn:       * en_peasant (bool)
+                - Forward 2 - if in og row -> set en_peasant = true
+                - Forward 1  
                 - DiagonallyLeft/Right 1 - if otherpieces there
+
+    King:       - all dirs 1
+                - Left/Right 2 - if left/right 2 free and bishop on corner 
+
+    Queen:      - all directions inf
+    
+    Bishop:     - all diagonal direction inf
+
+    Rook:       - all vertical and horizontal inf
+
+    Knight:     - just Knight moves
+
+
 
 *2 Possbible actions moved piece (position, type of piece, board)
     - remove piece from board
@@ -75,15 +90,17 @@ Functions:
     - rochade 
 
 
-*3 Possible moves
-    *3.01 Forward(color, max_steps)
+*3 Check Possible moves (until piece or border)
+    *3.01 Forward(position, color, max_steps, board)
     *3.02 Backwards(color, max_steps)
     *3.03 Left(color, max_steps)
     *3.04 Right(color, max_steps)
+
     *3.05 DiagonallyForward(color, max_steps)
     *3.06 DiagonallyBackwards(color, max_steps)
     *3.07 DiagonallyLeft(color, max_steps)
     *3.08 DiagonallyRight(color, max_steps)
+
     Knight:
     *3.09 K_RightForward(color)
     *3.10 K_RightBackwards(color)
@@ -91,7 +108,9 @@ Functions:
     *3.12 K_LeftForward(color)
 
   
-  
+*4 No check afterwards
+    For all oposing figures check if after that move a check exists
+    if true return true
 
 
 
