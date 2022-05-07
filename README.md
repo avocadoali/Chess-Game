@@ -115,6 +115,24 @@ Functions:
 
 
 
+# Todo's
+
+- implement Board
+
+- implement Figures
+    Pawn
+    King 
+    Queen 
+    Bishop 
+    Knight
+    Rook
+
+- implement Game logic
+
+
+
+
+
 
 
 
