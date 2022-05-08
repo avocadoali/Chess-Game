@@ -8,8 +8,13 @@ def main():
     first_pawn = Pawn("1", "Black", {1,0})
     test = Board()
     test.print()
-    
 
+   # for row in reversed(range(8)):
+   #         print("|", end = '')
+   #         for col in reversed(range(8)):
+   #             print(str(col) + str(row)  + "|", end = '')
+   #         print("")
+    
     
 if __name__ == "__main__":
     main()

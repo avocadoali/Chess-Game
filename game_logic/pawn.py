@@ -1,3 +1,4 @@
+
 from game_logic.piece import Piece
 
 class Pawn(Piece):
