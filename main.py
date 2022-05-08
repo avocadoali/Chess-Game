@@ -9,12 +9,12 @@ def main():
     test = Board()
     test.print()
 
-   # for row in reversed(range(8)):
-   #         print("|", end = '')
-   #         for col in reversed(range(8)):
-   #             print(str(col) + str(row)  + "|", end = '')
-   #         print("")
-    
+    for row in reversed(range(8)):
+            print("|", end = '')
+            for col in (range(8)):
+                print(str(col) + str(row)  + "|", end = '')
+            print("")
+   
     
 if __name__ == "__main__":
     main()
