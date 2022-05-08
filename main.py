@@ -6,10 +6,8 @@ from game_logic.piece import Piece
 
 def main():
     first_pawn = Pawn("1", "Black", {1,0})
-    test = Board(first_pawn)
+    test = Board()
     test.print()
-    print("")
-    row = test.board[1]
     
 
     
