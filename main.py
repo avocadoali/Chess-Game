@@ -1,13 +1,17 @@
+from board.board import Board
 from game_logic.pawn import Pawn
+from game_logic.piece import Piece
 
 
 
 def main():
-    print("Start the game")
-
-    myPawn = Pawn("hi", "black", {1,1})
+    first_pawn = Pawn("1", "Black", {1,0})
+    test = Board(first_pawn)
+    test.print()
+    print("")
+    row = test.board[1]
     
-    myPawn.print()
 
+    
 if __name__ == "__main__":
     main()
