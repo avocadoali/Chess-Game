@@ -59,11 +59,11 @@ class Board:
     def print(self):
         for x in reversed(range(8)):
             for row in (self.board):
-                print(str(row[x].abbrev) + "|", end ='')
+                print(str(row[x].name) + "|", end ='')
             print("")
 
     def insert(self, piece):
-        if self.board[piece.pos_x][piece.pos_y].abbrev == "--":
+        if self.board[piece.pos_x][piece.pos_y].name == "--":
             self.board[piece.pos_x][piece.pos_y] = piece 
         else:
             print("")
@@ -71,6 +71,11 @@ class Board:
             print("Kannt da keine Figue einfügen")
             print("")
             print("")
+        return self.board
+
+    def check_for_field(self, pos_x, pos_y):
+        self.board[pos_x][pos_y].check(self.board)
+
         return self.board
 
 # board[0][0] - unten links

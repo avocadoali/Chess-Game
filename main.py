@@ -2,7 +2,6 @@ from board import Board
 from game_logic.pawn import Pawn
 from game_logic.piece import Piece
 from game_logic.rook import Rook
-import copy
 
 
 def main():
@@ -10,13 +9,15 @@ def main():
     board = Board()
     e_board = Board()
 
-    newrook2 = Rook("RB1", "W", "RB", 0, 5)
+    newrook2 = Rook( "RW", "W", 0, 5)
 
-    newrook = Rook("RW1", "W", "RW", 0, 5 )
+    newrook = Rook( "RB", "B", 0, 2 )
 
     board.insert(newrook)
     board.insert(newrook2)
     board.print()
+
+    board.check_for_field(0,5)
 
 #    newrook2.put(board.board)
 #    newrook.put(board.board)
