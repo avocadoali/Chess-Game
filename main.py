@@ -9,15 +9,18 @@ def main():
     board = Board()
     e_board = Board()
 
-    newrook2 = Rook( "RW", "W", 3, 5)
+    newrook2 = Rook( "AA", "W", 3, 5)
 
-    newrook = Rook( "RB", "W", 0, 5 )
-    newrook3 = Rook( "RB", "B", 5, 5 )
+    newrook = Rook( "RB", "W", 5, 5 )
+    newrook3 = Rook( "RB", "", 3, 6 )
+    newrook4 = Rook( "RB", "B", 6, 5 )
+    newrook5 = Rook( "RB", "W", 0, 5 )
 
 
     board.insert(newrook)
-    board.insert(newrook3)
     board.insert(newrook2)
+    board.insert(newrook4)
+    board.insert(newrook3)
     print("")
     board.print()
 

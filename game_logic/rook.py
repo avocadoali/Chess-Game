@@ -32,11 +32,6 @@ class Rook(Piece):
                 break
 
             board[pos_x][pos_y] = crossed_piece
-
-            try:
-                board[pos_x][pos_y+1].name != "--"
-            except:
-                break
             pos_y = pos_y + 1
         return 0
 
@@ -51,10 +46,6 @@ class Rook(Piece):
 
             board[pos_x][pos_y] = crossed_piece
 
-            try:
-                board[pos_x][pos_y-1].name != "--"
-            except:
-                break
             pos_y = pos_y - 1
         return 0
 
@@ -70,10 +61,6 @@ class Rook(Piece):
 
             board[pos_x][pos_y] = crossed_piece
 
-            try:
-                board[pos_x-1][pos_y].name != "--"
-            except:
-                break
             pos_x = pos_x - 1
         return 0
 
