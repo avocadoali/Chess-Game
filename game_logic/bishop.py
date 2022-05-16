@@ -1,5 +1,5 @@
 
-from board import Board
+from game_logic.board import Board
 from game_logic.crossed_p import Crossed_P
 from game_logic.piece import Piece
 

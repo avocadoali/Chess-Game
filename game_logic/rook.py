@@ -1,5 +1,5 @@
 
-from board import Board
+from game_logic.board import Board
 from game_logic.crossed_p import Crossed_P
 from game_logic.piece import Piece
 
@@ -45,7 +45,6 @@ class Rook(Piece):
                 break
 
             board[pos_x][pos_y] = crossed_piece
-
             pos_y = pos_y - 1
         return 0
 
@@ -60,7 +59,6 @@ class Rook(Piece):
                 break
 
             board[pos_x][pos_y] = crossed_piece
-
             pos_x = pos_x - 1
         return 0
 
@@ -75,10 +73,5 @@ class Rook(Piece):
                 break
 
             board[pos_x][pos_y] = crossed_piece
-
-            try:
-                board[pos_x + 1][pos_y].name != "--"
-            except:
-                break
             pos_x = pos_x + 1
         return 0
