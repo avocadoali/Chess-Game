@@ -1,21 +1,33 @@
+import re
 from game_logic.piece import Piece
 from board import Board
 from game_logic.crossed_p import Crossed_P
+
+import copy
 
 class Knight(Piece):
     def __init__(self, name, color, pos_x, pos_y):
         super().__init__(name, color, pos_x, pos_y)
 
 
+    def check(self, board):
+        e_board = Board()
+        e_board.board = copy.deepcopy(board)
+        self.check_up_right(e_board.board)
+        print("")
+        e_board.print()
+        return e_board
+
     def check_up_right(self, board):
         pos_y = self.pos_y + 2 
         pos_x = self.pos_x + 1
         crossed_piece = Crossed_P()
 
-        if board[pos_x][pos_y].name != "--":
+        if pos_y<=7 and pos_x <= 7 and board[pos_x][pos_y].name != "--" and self.color != board[pos_x][pos_y].color:
             board[pos_x][pos_y] = crossed_piece
 
         board[pos_x][pos_y] = crossed_piece
+        return 0 
 
     def check_up_left(self, board):
         pos_y = self.pos_y + 1

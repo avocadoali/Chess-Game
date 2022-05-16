@@ -13,7 +13,7 @@ class Bishop(Piece):
     def check(self, board):
         e_board = Board()
         e_board.board = copy.deepcopy(board)
-       queen self.check_up_right(e_board.board)
+        self.check_up_right(e_board.board)
         self.check_up_left(e_board.board)
         self.check_down_left(e_board.board)
         self.check_down_right(e_board.board)
