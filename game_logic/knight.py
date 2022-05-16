@@ -13,6 +13,11 @@ class Knight(Piece):
     def check(self, board):
         e_board = Board()
         e_board.board = copy.deepcopy(board)
+        self.check_right_up(e_board.board)
+        self.check_left_up(e_board.board)
+        self.check_right_down(e_board.board)
+        self.check_left_down(e_board.board)
+
         self.check_up_right(e_board.board)
         self.check_up_left(e_board.board)
         self.check_down_right(e_board.board)
@@ -20,6 +25,42 @@ class Knight(Piece):
         print("")
         e_board.print()
         return e_board
+
+    def check_right_up(self, board):
+        pos_y = self.pos_y + 1
+        pos_x = self.pos_x + 2
+        
+        if pos_y<=7 and pos_x <= 7 and self.color != board[pos_x][pos_y].color:
+            board[pos_x][pos_y] = Crossed_P()
+        return 0 
+
+    def check_left_up(self, board):
+        pos_y = self.pos_y + 1
+        pos_x = self.pos_x - 2
+        
+        if pos_y<=7 and pos_x >= 0 and self.color != board[pos_x][pos_y].color:
+            board[pos_x][pos_y] = Crossed_P()
+        return 0 
+
+    def check_right_down(self, board):
+        pos_y = self.pos_y - 1
+        pos_x = self.pos_x + 2
+        
+        if pos_y >= 0 and pos_x <= 7 and self.color != board[pos_x][pos_y].color:
+            board[pos_x][pos_y] = Crossed_P()
+        return 0 
+
+    def check_left_down(self, board):
+        pos_y = self.pos_y - 1
+        pos_x = self.pos_x - 2
+        
+        if pos_y >= 0 and pos_x >= 0 and self.color != board[pos_x][pos_y].color:
+            board[pos_x][pos_y] = Crossed_P()
+        return 0 
+
+
+
+
 
     def check_up_right(self, board):
         pos_y = self.pos_y + 2 
