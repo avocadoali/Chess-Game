@@ -74,7 +74,8 @@ class Board:
         return self.board
 
     def check_for_field(self, pos_x, pos_y):
-        self.board[pos_x][pos_y].check(self.board)
+        if (self.board[pos_x][pos_y]).name!= "--":
+            self.board[pos_x][pos_y].check(self.board)
 
         return self.board
 

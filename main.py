@@ -2,22 +2,29 @@ from board import Board
 from game_logic.bishop import Bishop
 from game_logic.pawn import Pawn
 from game_logic.piece import Piece
+from game_logic.queen import Queen
 from game_logic.rook import Rook
 
 
 def main():
 
     board = Board()
-    e_board = Board()
 
-    bishop1 = Bishop( "BW", "W", 3, 5)
-    newrook2 = Rook( "AA", "B", 5, 7)
-    newrook = Rook( "RB", "B", 7, 1 )
-    board.insert(newrook)
+    queen = Queen( "BW", "W", 3, 5)
+    board.insert(queen)
+    newrook2 = Rook( "AA", "W", 5, 7)
     board.insert(newrook2)
-    board.insert(bishop1)
     board.print()
     board.check_for_field(3,5)
+
+    #bishop1 = Bishop( "BW", "W", 3, 5)
+    #newrook2 = Rook( "AA", "B", 5, 7)
+    #newrook = Rook( "RB", "B", 7, 1 )
+    #board.insert(newrook)
+    #board.insert(newrook2)
+    #board.insert(bishop1)
+    #board.print()
+    #board.check_for_field(3,5)
 
 
     #newrook2 = Rook( "AA", "W", 3, 5)
