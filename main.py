@@ -11,12 +11,12 @@ def main():
 
     board = Board()
 
-    knight =  Knight( "BW", "W", 3, 5)
+    knight =  Knight( "BW", "W", 3, 6)
     board.insert(knight)
-    newrook2 = Rook( "AA", "W", 5, 7)
+    newrook2 = Rook( "AA", "B", 4, 7)
     board.insert(newrook2)
     board.print()    
-    board.check_for_field(3,5)
+    board.check_for_field(3,6)
 
 
     #queen = Queen( "BW", "W", 3, 5)
