@@ -8,15 +8,29 @@ from game_logic.knight import Knight
 
 
 def main():
-
     board = Board()
 
-    knight =  Knight( "BW", "W", 3, 6)
-    board.insert(knight)
-    newrook2 = Rook( "AA", "B", 4, 7)
+    pawn1 = Pawn( "BW", "W", 3, 1)
+    board.insert(pawn1)
+    newrook2 = Rook( "AA", "B", 3, 3)
     board.insert(newrook2)
+    pawn2 = Pawn( "BW", "W", 2, 6)
+    board.insert(pawn2)
+    newrook3 = Rook( "AA", "B", 0, 4)
+    board.insert(newrook3)
     board.print()    
-    board.check_for_field(3,6)
+    board.check_for_field(2,6)
+
+
+ 
+
+
+    #knight =  Knight( "BW", "W", 3, 6)
+    #board.insert(knight)
+    #newrook2 = Rook( "AA", "B", 4, 7)
+    #board.insert(newrook2)
+    #board.print()    
+    #board.check_for_field(3,6)
 
 
     #queen = Queen( "BW", "W", 3, 5)

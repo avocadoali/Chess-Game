@@ -1,4 +1,3 @@
-import re
 from game_logic.piece import Piece
 from game_logic.board import Board
 from game_logic.crossed_p import Crossed_P
@@ -58,10 +57,6 @@ class Knight(Piece):
             board[pos_x][pos_y] = Crossed_P()
         return 0 
 
-
-
-
-
     def check_up_right(self, board):
         pos_y = self.pos_y + 2 
         pos_x = self.pos_x + 1
@@ -76,7 +71,6 @@ class Knight(Piece):
         
         if pos_y <= 7 and pos_x >= 0 and self.color != board[pos_x][pos_y].color:
             board[pos_x][pos_y] = Crossed_P()
-
         return 0 
 
     def check_down_right(self, board):
@@ -85,7 +79,6 @@ class Knight(Piece):
         
         if pos_y>=0 and pos_x <= 7 and self.color != board[pos_x][pos_y].color:
             board[pos_x][pos_y] = Crossed_P()
-
         return 0 
 
     def check_down_left(self, board):
@@ -94,6 +87,5 @@ class Knight(Piece):
         
         if pos_y>=0 and pos_x>=0 and self.color != board[pos_x][pos_y].color:
             board[pos_x][pos_y] = Crossed_P()
-
         return 0 
 
