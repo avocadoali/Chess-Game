@@ -5,21 +5,35 @@ from game_logic.piece import Piece
 from game_logic.queen import Queen
 from game_logic.rook import Rook
 from game_logic.knight import Knight
+from king import King
 
 
 def main():
     board = Board()
 
-    pawn1 = Pawn( "BW", "W", 3, 1)
-    board.insert(pawn1)
-    newrook2 = Rook( "AA", "B", 3, 3)
+    king= King( "KW", "W", 3, 5)
+    board.insert(king)
+    newrook2 = Rook( "RB", "B", 4, 2)
     board.insert(newrook2)
-    pawn2 = Pawn( "BW", "W", 2, 6)
+    pawn2 = Pawn( "PW", "W", 2, 6)
     board.insert(pawn2)
-    newrook3 = Rook( "AA", "B", 0, 4)
+    newrook3 = Rook( "RB", "B", 0, 4)
     board.insert(newrook3)
     board.print()    
-    board.check_for_field(2,6)
+    board.check_for_field(3,5)
+
+
+
+    #pawn1 = Pawn( "PW", "W", 3, 1)
+    #board.insert(pawn1)
+    #newrook2 = Rook( "RB", "B", 4, 2)
+    #board.insert(newrook2)
+    #pawn2 = Pawn( "PW", "W", 2, 6)
+    #board.insert(pawn2)
+    #newrook3 = Rook( "RB", "B", 0, 4)
+    #board.insert(newrook3)
+    #board.print()    
+    #board.check_for_field(3,1)
 
 
  
