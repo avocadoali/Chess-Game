@@ -11,8 +11,21 @@ from king import King
 def main():
     board = Board()
 
-    king= King( "KW", "W", 3, 5)
-    board.insert(king)
+    #king= King( "KW", "W", 3, 5)
+    #board.insert(king)
+    #newrook2 = Rook( "RB", "B", 4, 2)
+    #board.insert(newrook2)
+    #pawn2 = Pawn( "PW", "B", 2, 6)
+    #board.insert(pawn2)
+    #newrook3 = Rook( "RB", "B", 0, 4)
+    #board.insert(newrook3)
+    #board.print()    
+    #board.check_for_field(3,5)
+
+
+
+    pawn1 = Pawn( "PW", "W", 3, 1)
+    board.insert(pawn1)
     newrook2 = Rook( "RB", "B", 4, 2)
     board.insert(newrook2)
     pawn2 = Pawn( "PW", "W", 2, 6)
@@ -20,20 +33,7 @@ def main():
     newrook3 = Rook( "RB", "B", 0, 4)
     board.insert(newrook3)
     board.print()    
-    board.check_for_field(3,5)
-
-
-
-    #pawn1 = Pawn( "PW", "W", 3, 1)
-    #board.insert(pawn1)
-    #newrook2 = Rook( "RB", "B", 4, 2)
-    #board.insert(newrook2)
-    #pawn2 = Pawn( "PW", "W", 2, 6)
-    #board.insert(pawn2)
-    #newrook3 = Rook( "RB", "B", 0, 4)
-    #board.insert(newrook3)
-    #board.print()    
-    #board.check_for_field(3,1)
+    board.check_for_field(3,1)
 
 
  

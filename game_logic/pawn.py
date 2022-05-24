@@ -1,4 +1,5 @@
 
+from turtle import pos
 from game_logic.board import Board
 from game_logic.crossed_p import Crossed_P
 from game_logic.piece import Piece
@@ -15,6 +16,8 @@ class Pawn(Piece):
         e_board = Board()
         e_board.board = copy.deepcopy(board)
         self.check_up(e_board.board)
+        self.check_up_right(e_board.board)
+        self.check_up_left(e_board.board)
         print("")
         e_board.print()
         return e_board
@@ -42,3 +45,19 @@ class Pawn(Piece):
 
         return 0 
 
+
+    def check_up_right(self, board):
+        pos_y = self.pos_y + 1
+        pos_x = self.pos_x + 1
+
+        if (pos_y <= 7 and pos_x <= 7 and board[pos_x][pos_y].name != "--" and self.color != board[pos_x][pos_y].color):
+            board[pos_x][pos_y] = Crossed_P()
+        return 0
+
+    def check_up_left(self, board):
+        pos_y = self.pos_y + 1
+        pos_x = self.pos_x - 1
+
+        if (pos_y <= 7 and pos_x >= 0 and board[pos_x][pos_y].name != "--" and self.color != board[pos_x][pos_y].color):
+            board[pos_x][pos_y] = Crossed_P()
+        return 0
