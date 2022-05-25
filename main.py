@@ -23,6 +23,8 @@ def main():
     board.print()    
     board.check_for_field(4,0)
 
+    print("Das ist ein test ")
+
 
 
     #pawn1 = Pawn( "PW", "W", 3, 4)
