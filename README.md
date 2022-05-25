@@ -119,18 +119,29 @@ Functions:
 
 Done:
 - implement Board
-
----
-Pending:
 - implement Figures
-    Pawn
+    Pawn 
     King 
     Queen 
     Bishop 
-    Knight
-    Rook
+    Knight 
+    Rook 
+
+---
+
+Pending:
+- implement moves for black ?? 
+    - define moves foward backward for black/white?
+    - invert methods?
+    - extra class for black?
 
 - implement Game logic
+    - iterate players
+    - ask for moves
+    - show possible moves
+    - check for king checks 
+    - check for illegal moves
+    - three times same position -> patt
 
 
 
