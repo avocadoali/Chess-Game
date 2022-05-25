@@ -45,7 +45,6 @@ class Pawn(Piece):
             # Check if second step foward is possible
             if steps and pos_y+2 <= 7 and board[pos_x][pos_y+2].name == "--":
                 board[pos_x][pos_y+2] = crossed_piece
-
         return 0 
 
 
@@ -77,11 +76,6 @@ class Pawn(Piece):
     def check_en_passant_up_left(self, board):
         pos_y = self.pos_y + 1
         pos_x = self.pos_x - 1
-        test = pos_y <= 7 
-        test = pos_x >= 0 
-        test =  "P" in board[pos_x][self.pos_y].name  
-        test = (self.color != board[pos_x][pos_y].color)
-
 
         if (pos_y <= 7 and pos_x >= 0 and "P" in board[pos_x][self.pos_y].name and self.color != board[pos_x][pos_y].color):
             board[pos_x][pos_y] = Crossed_P()
