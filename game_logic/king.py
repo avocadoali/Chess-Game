@@ -31,14 +31,18 @@ class King(Piece):
         pos_y = self.pos_y + 1
         pos_x = self.pos_x
 
-        if pos_y <= 7 and (self.color != board[pos_x][pos_y].color) :
+        if (pos_y <= 7 
+                and (self.color != board[pos_x][pos_y].color)):
+
             board[pos_x][pos_y] = Crossed_P()
         return 0
 
     def check_down(self, board):
         pos_y = self.pos_y - 1
         pos_x = self.pos_x
-        if (pos_y >= 0 and (self.color != board[pos_x][pos_y].color)):
+        if (pos_y >= 0 
+                and (self.color != board[pos_x][pos_y].color)):
+
             board[pos_x][pos_y] = Crossed_P()
 
         return 0
@@ -47,7 +51,9 @@ class King(Piece):
         pos_x = self.pos_x - 1
         pos_y = self.pos_y
 
-        if (pos_x >= 0 and (self.color != board[pos_x][pos_y].color)):
+        if (pos_x >= 0 
+                and (self.color != board[pos_x][pos_y].color)):
+
             board[pos_x][pos_y] = Crossed_P() 
 
         return 0
@@ -56,7 +62,9 @@ class King(Piece):
         pos_x = self.pos_x + 1
         pos_y = self.pos_y
 
-        if (pos_x <= 7 and (self.color != board[pos_x][pos_y].color)):
+        if (pos_x <= 7 
+                and (self.color != board[pos_x][pos_y].color)):
+
             board[pos_x][pos_y] = Crossed_P()
         return 0
 
@@ -64,7 +72,10 @@ class King(Piece):
         pos_y = self.pos_y + 1
         pos_x = self.pos_x + 1
 
-        if (pos_y <= 7 and pos_x <= 7 and (self.color != board[pos_x][pos_y].color)):
+        if (pos_y <= 7 
+                and pos_x <= 7 
+                and (self.color != board[pos_x][pos_y].color)):
+
             board[pos_x][pos_y] = Crossed_P()
         return 0
 
@@ -72,7 +83,10 @@ class King(Piece):
         pos_y = self.pos_y + 1
         pos_x = self.pos_x - 1
 
-        if (pos_y <= 7 and pos_x >= 0 and (self.color != board[pos_x][pos_y].color)):
+        if (pos_y <= 7 
+                and pos_x >= 0 
+                and (self.color != board[pos_x][pos_y].color)):
+
             board[pos_x][pos_y] = Crossed_P()
         return 0
 
@@ -80,7 +94,10 @@ class King(Piece):
         pos_y = self.pos_y - 1
         pos_x = self.pos_x - 1
 
-        if (pos_y >= 0 and pos_x >= 0 and (self.color != board[pos_x][pos_y].color)):
+        if (pos_y >= 0 
+                and pos_x >= 0 
+                and (self.color != board[pos_x][pos_y].color)):
+
             board[pos_x][pos_y] = Crossed_P() 
         return 0
 
@@ -88,7 +105,10 @@ class King(Piece):
         pos_y = self.pos_y - 1
         pos_x = self.pos_x + 1
 
-        if (pos_y >= 0 and pos_x <= 7 and (self.color != board[pos_x][pos_y].color)):
+        if (pos_y >= 0 
+                and pos_x <= 7 
+                and (self.color != board[pos_x][pos_y].color)):
+
             board[pos_x][pos_y] = Crossed_P()
         return 0
 
@@ -96,14 +116,7 @@ class King(Piece):
         pos_x = self.pos_x 
         pos_y = self.pos_y
 
-        test =   "--" == board[pos_x-1][pos_y].name 
-        print(test)
-        test =   "--" == board[pos_x-2][pos_y].name 
-        print(test)
-        test =  "R" in board[0][pos_y].name
-        print(test)
-
-
+        # check if fields in between are not covered by other pieces
         if (self.rochade_allowed 
                 and  "--" == board[pos_x-1][pos_y].name 
                 and  "--" == board[pos_x-2][pos_y].name 
@@ -117,6 +130,8 @@ class King(Piece):
         pos_x = self.pos_x 
         pos_y = self.pos_y
 
+
+        # check if fields in between are not covered by other pieces
         if (self.rochade_allowed 
                 and  "--" == board[pos_x+1][pos_y].name 
                 and  "--" == board[pos_x+2][pos_y].name
@@ -125,4 +140,8 @@ class King(Piece):
             board[pos_x+1][pos_y] = Crossed_P()
             board[pos_x+2][pos_y] = Crossed_P()
         return 0
+
+
+
+
 
