@@ -126,20 +126,17 @@ Done:
     Bishop 
     Knight 
     Rook 
+- implement moves for black 
 
 ---
 
 Pending:
-- implement moves for black ?? 
-    - define moves foward backward for black/white?
-    - invert methods?
-    - extra class for black?
 
-- implement Game logic
+- implement Game logic (Extra class)
+    - check for king checks 
     - iterate players
     - ask for moves
     - show possible moves
-    - check for king checks 
     - check for illegal moves
     - three times same position -> patt
 
