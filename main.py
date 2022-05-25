@@ -1,9 +1,9 @@
-from tkinter.tix import Tree
 from game_logic.board import Board
 from game_logic.bishop import Bishop
-from game_logic.pawn import Pawn
 from game_logic.piece import Piece
 from game_logic.queen import Queen
+from game_logic.pawn_b import Pawn_B
+from game_logic.pawn_w import Pawn_W
 from game_logic.rook import Rook
 from game_logic.knight import Knight
 from game_logic.king import King
@@ -12,33 +12,30 @@ from game_logic.king import King
 def main():
     board = Board()
 
-    king= King( "KW", "W", 4, 0)
-    board.insert(king)
-    newrook2 = Rook( "RB", "B", 7, 0)
-    board.insert(newrook2)
-    pawn2 = Pawn( "PW", "B", 2, 6)
-    board.insert(pawn2)
-    newrook3 = Rook( "RB", "B", 0, 0)
-    board.insert(newrook3)
-    board.print()    
-    board.check_for_field(4,0)
+    #king= King( "KW", "W", 4, 0)
+    #board.insert(king)
+    ##newrook2 = Rook( "RB", "B", 7, 0)
+    ## board.insert(newrook2)
 
-    print("Das ist ein test ")
-
-
-
-    #pawn1 = Pawn( "PW", "W", 3, 4)
-    #board.insert(pawn1)
-    #pawn2 = Pawn( "PB", "B", 2, 4)
-    #pawn2.en_passent = True
+    #pawn2 = Pawn_W( "PW", "B", 2, 6)
     #board.insert(pawn2)
-    #newrook3 = Rook( "RB", "B", 2, 4)
+    #newrook3 = Rook( "RB", "B", 0, 0)
     #board.insert(newrook3)
-    #board.print()    
-    #board.check_for_field(3,4)
+    #board.print()
+    #board.check_for_field(4,0)
 
 
- 
+
+    pawn1 = Pawn_B( "PB", 3, 3)
+    board.insert(pawn1)
+    pawn2 = Pawn_W ( "PB", 4, 3)
+    board.insert(pawn2)
+    pawn3 = Pawn_W ( "PB", 2, 3)
+    board.insert(pawn3)
+    newrook3 = Rook( "RB", "B", 1, 4)
+    board.insert(newrook3)
+    board.print()
+    board.check_for_field(3,3)
 
 
     #knight =  Knight( "BW", "W", 3, 6)
