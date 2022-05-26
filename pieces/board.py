@@ -1,4 +1,4 @@
-from game_logic.empty_p import Empty_P
+from pieces.empty_p import Empty_P
 
 
 class Board:

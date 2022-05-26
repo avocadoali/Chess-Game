@@ -1,12 +1,12 @@
-from game_logic.board import Board
-from game_logic.bishop import Bishop
-from game_logic.piece import Piece
-from game_logic.queen import Queen
-from game_logic.pawn_b import Pawn_B
-from game_logic.pawn_w import Pawn_W
-from game_logic.rook import Rook
-from game_logic.knight import Knight
-from game_logic.king import King
+from pieces.board import Board
+from pieces.bishop import Bishop
+from pieces.piece import Piece
+from pieces.queen import Queen
+from pieces.pawn_b import Pawn_B
+from pieces.pawn_w import Pawn_W
+from pieces.rook import Rook
+from pieces.knight import Knight
+from pieces.king import King
 
 
 def main():
