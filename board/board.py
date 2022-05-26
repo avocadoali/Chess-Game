@@ -59,9 +59,7 @@ class Board():
         for pos_x in range(8):
             board[pos_x][6] = Pawn_B("PB", pos_x,6)
 
-        
-
-        return board 
+        return board
 
 
     def print(self):

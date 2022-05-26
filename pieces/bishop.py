@@ -1,4 +1,5 @@
 
+import board.board as b
 from pieces.crossed_p import Crossed_P
 from pieces.piece import Piece
 
@@ -10,7 +11,7 @@ class Bishop(Piece):
 
 
     def check(self, board):
-        e_board = Board()
+        e_board = b.Board()
         e_board.board = copy.deepcopy(board)
         self.check_up_right(e_board.board)
         self.check_up_left(e_board.board)

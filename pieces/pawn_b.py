@@ -1,4 +1,6 @@
 
+import board.board as b
+
 from pieces.crossed_p import Crossed_P
 from pieces.piece import Piece
 
@@ -11,7 +13,7 @@ class Pawn_B (Piece):
 
     
     def check(self, board):
-        e_board = Board()
+        e_board = b.Board()
         e_board.board = copy.deepcopy(board)
 
         self.check_down(e_board.board)

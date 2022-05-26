@@ -12,6 +12,8 @@ from pieces.king import King
 def main():
     board = Board()
     board.print()
+    board.check_for_field(4,1)
+
 
     #king= King( "KW", "W", 4, 0)
     #board.insert(king)

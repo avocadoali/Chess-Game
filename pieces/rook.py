@@ -1,4 +1,6 @@
 
+import board.board as b
+
 from pieces.crossed_p import Crossed_P
 from pieces.piece import Piece
 
@@ -10,7 +12,7 @@ class Rook(Piece):
         super().__init__(name, color, pos_x, pos_y)
 
     def check(self, board):
-        e_board = Board()
+        e_board = b.Board()
         e_board.board = copy.deepcopy(board)
         self.check_up(e_board.board)
         self.check_down(e_board.board)

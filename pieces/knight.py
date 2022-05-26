@@ -1,3 +1,5 @@
+import board.board as b
+
 from pieces.piece import Piece
 from pieces.crossed_p import Crossed_P
 
@@ -9,7 +11,7 @@ class Knight(Piece):
 
 
     def check(self, board):
-        e_board = Board()
+        e_board = b.Board()
         e_board.board = copy.deepcopy(board)
         self.check_right_up(e_board.board)
         self.check_left_up(e_board.board)
