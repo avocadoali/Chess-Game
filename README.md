@@ -39,6 +39,7 @@ Game logic
     if no and King in check -> loose
     if no and King not in check -> draw
     if yes -> 2. 
+    if three times same position -> patt
 
 2. take input of piece to move 
     if not valid -> "wrong piece try again"
@@ -132,12 +133,21 @@ Done:
 
 Pending:
 
+- move piece
+
+- check for king checks 
+
+
+- check for illegal moves when checked for that color
+
+- end when no moves allowed
+
+
+
 - implement Game logic (Extra class)
-    - check for king checks 
     - iterate players
     - ask for moves
     - show possible moves
-    - check for illegal moves
     - three times same position -> patt
 
 

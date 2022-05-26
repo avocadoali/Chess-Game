@@ -1,18 +1,17 @@
+from board.board import Board
 
 class Game():
 
-    def __init__(self, board, current_player):
-        self.board = init_board()
+    def __init__(self, ):
+        self.board = Board()
         self.current_player = "W"
 
-    def init_board():
-        #intialize board
-
-        # turn player B
+    def check_field(self, pos_x, pos_y):
+        self.board.check_for_field(pos_x, pos_y)
 
 
-
-        
+    def print(self):
+        self.board.print()
         return 0
 
 

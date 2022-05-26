@@ -8,6 +8,7 @@ from pieces.knight import Knight
 from pieces.king import King
 from pieces.empty_p import Empty_P
 
+import copy
 
 class Board():
 
@@ -79,10 +80,31 @@ class Board():
         return self.board
 
     def check_for_field(self, pos_x, pos_y):
+        checked_board = []
         if (self.board[pos_x][pos_y]).name!= "--":
-            self.board[pos_x][pos_y].check(self.board)
+            checked_board = (self.board[pos_x][pos_y].check(self.board))
+
+        return checked_board
+
+    def move_from_to(self, color, x, y, to_x, to_y):
+        checked_board = self.check_for_field(x, y)
+
+        if checked_board.board[to_x][to_y].name == "XX":
+            print("move is allowed")
+            piece = self.board[x][y]
+            piece.pos_x = to_x
+            piece.pos_y = to_y
+
+            self.board[to_x][to_y] = piece
+            self.board[x][y] = Empty_P()
+
+        else:
+            print("not allowed")
+
+
 
         return self.board
+
 
 # board[0][0] - unten links
 # board[7][7] - oben rechts 
