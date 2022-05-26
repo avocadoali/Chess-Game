@@ -1,5 +1,4 @@
 
-from pieces.board import Board
 from pieces.crossed_p import Crossed_P
 from pieces.piece import Piece
 

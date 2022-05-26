@@ -1,4 +1,4 @@
-from pieces.board import Board
+from board.board import Board
 from pieces.bishop import Bishop
 from pieces.piece import Piece
 from pieces.queen import Queen
@@ -11,6 +11,7 @@ from pieces.king import King
 
 def main():
     board = Board()
+    board.print()
 
     #king= King( "KW", "W", 4, 0)
     #board.insert(king)
@@ -26,16 +27,16 @@ def main():
 
 
 
-    pawn1 = Pawn_B( "PB", 3, 3)
-    board.insert(pawn1)
-    pawn2 = Pawn_W ( "PB", 4, 3)
-    board.insert(pawn2)
-    pawn3 = Pawn_W ( "PB", 2, 3)
-    board.insert(pawn3)
-    newrook3 = Rook( "RB", "B", 1, 4)
-    board.insert(newrook3)
-    board.print()
-    board.check_for_field(3,3)
+    #pawn1 = Pawn_B( "PB", 3, 3)
+    #board.insert(pawn1)
+    #pawn2 = Pawn_W ( "PB", 4, 3)
+    #board.insert(pawn2)
+    #pawn3 = Pawn_W ( "PB", 2, 3)
+    #board.insert(pawn3)
+    #newrook3 = Rook( "RB", "B", 1, 4)
+    #board.insert(newrook3)
+    #board.print()
+    #board.check_for_field(3,3)
 
 
     #knight =  Knight( "BW", "W", 3, 6)

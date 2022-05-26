@@ -1,5 +1,5 @@
+
 from pieces.piece import Piece
-from pieces.board import Board
 from pieces.crossed_p import Crossed_P
 
 import copy

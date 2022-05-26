@@ -1,7 +1,15 @@
+from pieces.bishop import Bishop
+from pieces.piece import Piece
+from pieces.queen import Queen
+from pieces.pawn_b import Pawn_B
+from pieces.pawn_w import Pawn_W
+from pieces.rook import Rook
+from pieces.knight import Knight
+from pieces.king import King
 from pieces.empty_p import Empty_P
 
 
-class Board:
+class Board():
 
     def __init__(self) :
         self.board = self.make_board()
@@ -16,43 +24,43 @@ class Board:
 
             board.append(row)
 
-        #init with pawns
-#        count = 1
-#        for col in range(8):
-#            board[col][1] = ["PW", count]
-#            count += 1
-#
-#        count = 1
-#        for col in range(8):
-#            board[col][6] = ["PB",count]
-#            count += 1
-#
-#        #init kings
-#        board[4][0] = ["KW",1]
-#        board[4][7] = ["KW",1]
-#
-#        #init queens
-#        board[3][0] = ["QW",1]
-#        board[3][7] = ["QW",1]
-#
-#        #init Bishop
-#        board[2][0] = ["BW",1]
-#        board[5][0] = ["BW",2]
-#        board[2][7] = ["BB",1]
-#        board[5][7] = ["BB",2]
-#
-#        #init Knights
-#        board[1][0] = ["KW",1]
-#        board[6][0] = ["KW",2]
-#        board[1][7] = ["KB",1]
-#        board[6][7] = ["KB",2]
-#
-#
-#        #init rooks
-#        board[0][0] = ["RW",1]
-#        board[7][0] = ["RW",2]
-#        board[0][7] = ["RB",1]
-#        board[7][7] = ["RB",2]
+        #init kings
+        board[4][0] = King("KW", "W", 4,0)
+        board[4][7] = King("KB", "B", 4,7)
+
+        #init queens
+        board[3][0] = Queen("QW", "W", 3, 0)
+        board[3][7] = Queen("QB", "B", 3, 7)
+
+        #init Bishop
+        board[2][0] = Bishop("BW", "W", 2, 0)
+        board[5][0] = Bishop("BW", "W", 5, 0)
+        board[2][7] = Bishop("BB", "B", 2, 7)
+        board[5][7] = Bishop("BB", "B", 5, 7)
+
+        #init Knights
+        board[1][0] = Knight("KW", "W", 1,0)
+        board[6][0] = Knight("KW", "W", 6,0)
+        board[1][7] = Knight("KB", "B", 1,7)
+        board[6][7] = Knight("KB", "B", 6,7)
+
+
+        #init rooks
+        board[0][0] = Rook("RW", "W", 0,0)
+        board[7][0] = Rook("RW", "W", 7,0)
+        board[0][7] = Rook("RB", "B", 0,7)
+        board[7][7] = Rook("RB", "B", 7,7)
+
+        #init white pawns
+        for pos_x in range(8):
+            board[pos_x][1] = Pawn_W("PW", pos_x,1)
+
+       #init black pawns
+        for pos_x in range(8):
+            board[pos_x][6] = Pawn_B("PB", pos_x,6)
+
+        
+
         return board 
 
 
@@ -61,15 +69,14 @@ class Board:
             for row in (self.board):
                 print(str(row[x].name) + "|", end ='')
             print("")
+        return 0
 
     def insert(self, piece):
         if self.board[piece.pos_x][piece.pos_y].name == "--":
             self.board[piece.pos_x][piece.pos_y] = piece 
         else:
             print("")
-            print("")
-            print("Kannt da keine Figue einfügen")
-            print("")
+            print("There is already another pieces")
             print("")
         return self.board
 
