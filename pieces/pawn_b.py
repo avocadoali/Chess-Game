@@ -30,7 +30,7 @@ class Pawn_B (Piece):
         steps = False
                 # Check if pawn is in front row
         # for double steps on the first move
-        if self.pos_y == 1:
+        if self.pos_y == 6:
             steps = True
 
         pos_y = self.pos_y
@@ -79,10 +79,10 @@ class Pawn_B (Piece):
 
         if (pos_y == 3
                 and "P" in board[pos_x][pos_y].name
-                and board[pos_x][pos_y].en_passant
                 and self.color != board[pos_x][pos_y].color):
 
-            board[pos_x][pos_y-1] = Crossed_P()
+            if board[pos_x][pos_y].en_passant:
+                board[pos_x][pos_y-1] = Crossed_P()
 
         return 0
 
@@ -92,11 +92,10 @@ class Pawn_B (Piece):
         pos_x = self.pos_x - 1
 
         if (pos_y == 3
-                and "P" in board[pos_x][self.pos_y].name
-                and board[pos_x][pos_y].en_passant
+                and "P" in board[pos_x][pos_y].name
                 and self.color != board[pos_x][pos_y].color):
 
-            board[pos_x][pos_y-1] = Crossed_P()
-
+            if board[pos_x][pos_y].en_passant:
+                board[pos_x][pos_y-1] = Crossed_P()
 
         return 0

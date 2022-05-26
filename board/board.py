@@ -68,7 +68,7 @@ class Board():
             for row in (self.board):
                 print(str(row[x].name) + "|", end ='')
             print("")
-        return 0
+        return 100
 
     def insert(self, piece):
         if self.board[piece.pos_x][piece.pos_y].name == "--":
@@ -89,8 +89,12 @@ class Board():
     def move_from_to(self, color, x, y, to_x, to_y):
         checked_board = self.check_for_field(x, y)
 
+        if self.board[x][y].color != color:
+            print("Piece is not allowed")
+            return self.board
+
         if checked_board.board[to_x][to_y].name == "XX":
-            print("move is allowed")
+            print("Move is allowed")
             piece = self.board[x][y]
             piece.pos_x = to_x
             piece.pos_y = to_y
@@ -99,11 +103,9 @@ class Board():
             self.board[x][y] = Empty_P()
 
         else:
-            print("not allowed")
+            print("Move is not allowed")
 
-
-
-        return self.board
+        return 0
 
 
 # board[0][0] - unten links
@@ -118,3 +120,4 @@ class Board():
 #|02|12|22|32|42|52|62|72|
 #|01|11|21|31|41|51|61|71|
 #|00|10|20|30|40|50|60|70|
+#

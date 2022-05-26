@@ -129,14 +129,16 @@ Done:
     Rook 
 - implement moves for black 
 
+- move piece
+
 ---
 
 Pending:
 
-- move piece
+
+- change between black/white
 
 - check for king checks 
-
 
 - check for illegal moves when checked for that color
 
