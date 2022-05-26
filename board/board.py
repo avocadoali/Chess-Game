@@ -89,11 +89,13 @@ class Board():
     def move_from_to(self, color, x, y, to_x, to_y):
         checked_board = self.check_for_field(x, y)
 
+        # check piece to be moved is the right color
         if self.board[x][y].color != color:
             print("Piece is not allowed")
             return self.board
 
-        if checked_board.board[to_x][to_y].name == "XX":
+        # check if field to move to is marked as allowed field
+        if "X" in checked_board.board[to_x][to_y].name:
             print("Move is allowed")
             piece = self.board[x][y]
             piece.pos_x = to_x
@@ -102,10 +104,22 @@ class Board():
             self.board[to_x][to_y] = piece
             self.board[x][y] = Empty_P()
 
+
+            # remove piece if en passant takes place
+            if "E" in checked_board.board[to_x][to_y].name:
+                print("Enpassent!")
+                if color == "W":
+                    print("white")
+                    self.board[to_x][to_y-1] = Empty_P()
+                else:
+                    print("black")
+                    self.board[to_x][to_y+1] = Empty_P()
+
+
         else:
             print("Move is not allowed")
 
-        return 0
+        return self.board
 
 
 # board[0][0] - unten links

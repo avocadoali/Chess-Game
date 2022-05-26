@@ -129,7 +129,9 @@ Done:
     Rook 
 - implement moves for black 
 
-- move piece
+- move piece right piece by color
+
+- take piece when en passant
 
 ---
 

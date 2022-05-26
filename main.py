@@ -23,11 +23,11 @@ def main():
     b.print()
 
     print("6")
+    #b.check_for_field(2,3)
     b.move_from_to("B", 2,3 ,3,2)
     b.print()
 
 
-    b.check_for_field(3,0)
 
 
 

@@ -1,6 +1,7 @@
 
 import board.board as b
 
+from pieces.crossed_e import Crossed_E
 from pieces.crossed_p import Crossed_P
 from pieces.piece import Piece
 
@@ -82,7 +83,7 @@ class Pawn_B (Piece):
                 and self.color != board[pos_x][pos_y].color):
 
             if board[pos_x][pos_y].en_passant:
-                board[pos_x][pos_y-1] = Crossed_P()
+                board[pos_x][pos_y-1] = Crossed_E()
 
         return 0
 
@@ -96,6 +97,6 @@ class Pawn_B (Piece):
                 and self.color != board[pos_x][pos_y].color):
 
             if board[pos_x][pos_y].en_passant:
-                board[pos_x][pos_y-1] = Crossed_P()
+                board[pos_x][pos_y-1] = Crossed_E()
 
         return 0
