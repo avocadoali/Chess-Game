@@ -51,7 +51,7 @@ def main():
     b.print()
 
     print("Checked")
-    b.is_checked("W")
+    b.is_checked("B")
 
 if __name__ == "__main__":
     main()

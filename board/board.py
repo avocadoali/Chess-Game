@@ -172,6 +172,7 @@ class Board():
                 index = index + 1
 
             del self.white_p[index]
+
         else:
             index = 0
             for p in self.black_p:
@@ -192,31 +193,20 @@ class Board():
         checked_board = Board()
         checked_board.board = copy.deepcopy(self.board)
 
-        for piece in self.white_p:
-            x = piece.pos_x
-            y = piece.pos_y
-            print(piece.name)
-            print(x)
-            print(y)
-            checked_board = self.check_for_field_two(x, y, checked_board.board)
+        if color == "W":
+            for piece in self.white_p:
+                x = piece.pos_x
+                y = piece.pos_y
+                checked_board = self.check_for_field_two(x, y, checked_board.board)
+        else:
+            for piece in self.black_p:
+                x = piece.pos_x
+                y = piece.pos_y
+                checked_board = self.check_for_field_two(x, y, checked_board.board)
 
-        #piece = self.white_p[1]
-        #x = piece.pos_x
-        #y = piece.pos_y
-        #print(piece.name)
-
-        #checked_board = self.check_for_field_two(x, y, checked_board.board)
-
-
-        #piece = self.white_p[2]
-        #x = piece.pos_x
-        #y = piece.pos_y
-        #print(piece.name)
-
-        #checked_board = self.check_for_field_two(x, y, checked_board.board)
-
-
-
+        print("")
+        print("")
+        print("checked board")
         checked_board.print()
 
 
