@@ -65,7 +65,6 @@ class Board():
         board[1][7] = self.black_p[4]
         board[6][7] = self.black_p[5]
 
-
         #init rooks
         board[0][0] = self.white_p[6]
         board[7][0] = self.white_p[7]
@@ -85,13 +84,15 @@ class Board():
         return board
 
 
+    #print the board
     def print(self):
         for x in reversed(range(8)):
             for row in (self.board):
                 print(str(row[x].name) + "|", end ='')
             print("")
-        return 100
+        return 0
 
+    #insert a piece into the board
     def insert(self, piece):
         if self.board[piece.pos_x][piece.pos_y].name == "--":
             self.board[piece.pos_x][piece.pos_y] = piece 
@@ -99,9 +100,11 @@ class Board():
             print("")
             print("There is already another pieces")
             print("")
+
         return self.board
 
 
+    #check allowed move if there is a piece on that field
     def check_for_field(self, pos_x, pos_y):
         checked_board = []
         if (self.board[pos_x][pos_y]).name!= "--":
@@ -109,7 +112,20 @@ class Board():
 
         return checked_board
 
+    #check allowed move if there is a piece on that field
+    #but with external board
+    def check_for_field_two(self, pos_x, pos_y, board):
+        checked_board = board
+        if (self.board[pos_x][pos_y]).name!= "--":
+            checked_board = self.board[pos_x][pos_y].check(checked_board)
+
+        return checked_board
+
+
+    # move a piece from in field to another
     def move_from_to(self, color, x, y, to_x, to_y):
+
+        # init temporary board
         checked_board = self.check_for_field(x, y)
 
         # check piece to be moved is the right color
@@ -117,7 +133,7 @@ class Board():
             print("Piece is not allowed")
             return self.board
 
-        # check if field to move to is marked as allowed field
+            # check if field to move to is marked as allowed field
         if "X" in checked_board.board[to_x][to_y].name:
             print("Move is allowed")
 
@@ -131,30 +147,25 @@ class Board():
             if dest_piece.name != "--":
                 self.rm_piece(dest_piece)
 
+            #set original field to empty field
             self.board[to_x][to_y] = piece
             self.board[x][y] = Empty_P()
 
 
             # remove piece if en passant takes place
             if "E" in checked_board.board[to_x][to_y].name:
-                print("Enpassent!")
                 if color == "W":
-                    print("white")
-
                     #remove piece from list
                     dest_piece = self.board[to_x][to_y-1]
                     self.rm_piece(dest_piece)
 
                     #set field to empty
                     self.board[to_x][to_y-1] = Empty_P()
-
                 else:
-                    print("black")
-
                     #remove piece from list
                     dest_piece = self.board[to_x][to_y+1]
                     self.rm_piece(dest_piece)
-                    #
+
                     #set field to empty
                     self.board[to_x][to_y+1] = Empty_P()
 
@@ -163,74 +174,67 @@ class Board():
 
         return self.board
 
+    #remove a piece from the pieces list
     def rm_piece(self, dest_piece):
+
+        #check which color the piece is
         if dest_piece.color == "W":
+
+            #index of piece to be removed
             index = 0
+
+            #search for the right piece object in list by position
             for p in self.white_p:
                 if p.pos_x == dest_piece.pos_x and p.pos_y == dest_piece.pos_y:
                     break
                 index = index + 1
 
+            #remove piece by index
             del self.white_p[index]
 
+
         else:
+
+            #index of piece to be removed
             index = 0
+
+            #search for the right piece object in list by position
             for p in self.black_p:
                 if p.pos_x == dest_piece.pos_x and p.pos_y == dest_piece.pos_y:
                     break
                 index = index + 1
 
+            #remove piece by index
             del self.black_p[index]
 
-        return 1
+        return 0
 
 
+    #shows if the king is currently checked
     def is_checked(self, color):
 
-        # returne board class
-        # nimmt board list
-
+        # init temporary board
         checked_board = Board()
         checked_board.board = copy.deepcopy(self.board)
 
+        # decides which color should be checked
         if color == "W":
+
+            # iterate through all pieces an check for all valid moves
             for piece in self.white_p:
                 x = piece.pos_x
                 y = piece.pos_y
                 checked_board = self.check_for_field_two(x, y, checked_board.board)
         else:
+
+            # iterate through all pieces an check for all valid moves
             for piece in self.black_p:
                 x = piece.pos_x
                 y = piece.pos_y
                 checked_board = self.check_for_field_two(x, y, checked_board.board)
 
-        print("")
-        print("")
+        #print the new marked board
         print("checked board")
         checked_board.print()
 
-
         return checked_board
-
-
-    def check_for_field_two(self, pos_x, pos_y, board):
-        checked_board = board
-        if (self.board[pos_x][pos_y]).name!= "--":
-            checked_board = self.board[pos_x][pos_y].check(checked_board)
-
-        return checked_board
-
-
-# board[0][0] - unten links
-# board[7][7] - oben rechts 
-# board x y
-
-#|07|17|27|37|47|57|67|77|
-#|06|16|26|36|46|56|66|76|
-#|05|15|25|35|45|55|65|75|
-#|04|14|24|34|44|54|64|74|
-#|03|13|23|33|43|53|63|73|
-#|02|12|22|32|42|52|62|72|
-#|01|11|21|31|41|51|61|71|
-#|00|10|20|30|40|50|60|70|
-#
