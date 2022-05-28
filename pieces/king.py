@@ -24,8 +24,8 @@ class King(Piece):
         self.check_up_left(e_board.board)
         self.check_down_left(e_board.board)
         self.check_down_right(e_board.board)
-        print("")
-        e_board.print()
+        #e_board.print()
+
         return e_board
 
     def check_up(self, board):
@@ -62,9 +62,6 @@ class King(Piece):
     def check_right(self, board):
         pos_x = self.pos_x + 1
         pos_y = self.pos_y
-
-        print(self.color)
-        print(board[pos_x][pos_y].color)
 
         if (pos_x <= 7 and self.color != board[pos_x][pos_y].color):
             board[pos_x][pos_y] = Crossed_P()

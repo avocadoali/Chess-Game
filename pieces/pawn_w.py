@@ -21,9 +21,8 @@ class Pawn_W(Piece):
         self.check_up_left(e_board.board)
         self.check_en_passant_up_right(e_board.board)
         self.check_en_passant_up_left(e_board.board)
+        #e_board.print()
 
-        print("")
-        e_board.print()
         return e_board
 
     def check_up(self, board):

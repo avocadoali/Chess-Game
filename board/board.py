@@ -13,27 +13,43 @@ import copy
 class Board():
 
     def __init__(self) :
-        self.black_p = [King("GB", "B", 4,7),
+        self.black_p = [King("KB", "B", 4,7),
             Queen("QB", "B", 3, 7),
             Bishop("BB", "B", 2, 7),
             Bishop("BB", "B", 5, 7),
-            Knight("KB", "B", 1,7),
-            Knight("KB", "B", 6,7),
+            Knight("kB", "B", 1,7),
+            Knight("kB", "B", 6,7),
             Rook("RB", "B", 0,7),
             Rook("RB", "B", 7,7)]
 
-        self.white_p = [ King("GW", "W", 4,0),
+        self.white_p = [ King("KW", "W", 4,0),
             Queen("QW", "W", 3, 0),
             Bishop("BW", "W", 2, 0),
             Bishop("BW", "W", 5, 0),
-            Knight("KW", "W", 1,0),
-            Knight("KW", "W", 6,0),
+            Knight("kW", "W", 1,0),
+            Knight("kW", "W", 6,0),
             Rook("RW", "W", 0,0)  ,
             Rook("RW", "W", 7,0)  ,
 
         ]
 
-        self.board = self.make_board()
+        self.board = self.make_board_test()
+
+    def make_board_test(self):
+        board = []
+        empty_piece = Empty_P()
+        for r in range(8):
+            row = []
+            for c in range(8):
+                row.append(empty_piece)
+
+            board.append(row)
+
+        board[4][0] = self.white_p[0]
+        board[3][7] = self.black_p[1]
+
+        return board
+
 
     def make_board(self):
         board = []
@@ -115,9 +131,10 @@ class Board():
     #check allowed move if there is a piece on that field
     #but with external board
     def check_for_field_two(self, pos_x, pos_y, board):
-        checked_board = board
+        checked_board = Board()
+        checked_board.board = copy.deepcopy(board)
         if (self.board[pos_x][pos_y]).name!= "--":
-            checked_board = self.board[pos_x][pos_y].check(checked_board)
+            checked_board = self.board[pos_x][pos_y].check(checked_board.board)
 
         return checked_board
 
@@ -131,11 +148,12 @@ class Board():
         # check piece to be moved is the right color
         if self.board[x][y].color != color:
             print("Piece is not allowed")
+
             return self.board
 
             # check if field to move to is marked as allowed field
         if "X" in checked_board.board[to_x][to_y].name:
-            print("Move is allowed")
+            #print("Move is allowed")
 
             #get piece that has to be moved and set its new position
             piece = self.board[x][y]
@@ -209,32 +227,54 @@ class Board():
 
         return 0
 
+    #shows if the king of specific color is currently checked
+    def is_checked(self, color ):
 
-    #shows if the king is currently checked
-    def is_checked(self, color):
+        if color == "B":
+            checked_board = self.legal_moves("W")
+
+            # check if black king is attacked(checked)
+            KB_pos_x = self.black_p[0].pos_x
+            KB_pos_y = self.black_p[0].pos_y
+
+            return checked_board.board[KB_pos_x][KB_pos_y].name == "XX"
+
+        else:
+            checked_board = self.legal_moves("B")
+
+            checked_board.print()
+
+            # check if white king is attacked(checked)
+            KW_pos_x = self.white_p[0].pos_x
+            KW_pos_y = self.white_p[0].pos_y
+
+            return checked_board.board[KW_pos_x][KW_pos_y].name == "XX"
+
+    #marks another board with all the legal move of specific color
+    def legal_moves(self, color):
 
         # init temporary board
         checked_board = Board()
         checked_board.board = copy.deepcopy(self.board)
 
+
         # decides which color should be checked
         if color == "W":
-
             # iterate through all pieces an check for all valid moves
             for piece in self.white_p:
                 x = piece.pos_x
                 y = piece.pos_y
                 checked_board = self.check_for_field_two(x, y, checked_board.board)
-        else:
 
+            return checked_board
+
+        else:
             # iterate through all pieces an check for all valid moves
             for piece in self.black_p:
                 x = piece.pos_x
                 y = piece.pos_y
                 checked_board = self.check_for_field_two(x, y, checked_board.board)
 
-        #print the new marked board
-        print("checked board")
-        checked_board.print()
+            return checked_board
 
         return checked_board

@@ -22,8 +22,8 @@ class Knight(Piece):
         self.check_up_left(e_board.board)
         self.check_down_right(e_board.board)
         self.check_down_left(e_board.board)
-        print("")
-        e_board.print()
+        #e_board.print()
+
         return e_board
 
     def check_right_up(self, board):

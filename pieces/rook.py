@@ -18,8 +18,8 @@ class Rook(Piece):
         self.check_down(e_board.board)
         self.check_left(e_board.board)
         self.check_right(e_board.board)
-        print("")
-        e_board.print()
+        #e_board.print()
+
         return e_board
 
     def check_up(self, board):
