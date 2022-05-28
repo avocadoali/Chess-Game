@@ -137,12 +137,11 @@ Done:
 
 Pending:
 
+- check for king checks 
+- check for illegal moves when checked for that color
 
 - change between black/white
 
-- check for king checks 
-
-- check for illegal moves when checked for that color
 
 - end when no moves allowed
 

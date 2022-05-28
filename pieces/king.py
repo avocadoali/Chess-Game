@@ -63,10 +63,12 @@ class King(Piece):
         pos_x = self.pos_x + 1
         pos_y = self.pos_y
 
-        if (pos_x <= 7 
-                and (self.color != board[pos_x][pos_y].color)):
+        print(self.color)
+        print(board[pos_x][pos_y].color)
 
+        if (pos_x <= 7 and self.color != board[pos_x][pos_y].color):
             board[pos_x][pos_y] = Crossed_P()
+        
         return 0
 
     def check_up_right(self, board):
@@ -116,6 +118,7 @@ class King(Piece):
     def check_rochade_left(self, board):
         pos_x = self.pos_x 
         pos_y = self.pos_y
+
 
         # check if fields in between are not covered by other pieces
         if (self.rochade_allowed 
