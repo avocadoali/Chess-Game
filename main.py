@@ -1,17 +1,24 @@
 #from game_logic.game_logic import Game
 from board.board import Board
+from tqdm import tqdm
 
 def main():
-
     b = Board()
-    b.move_from_to("B", 3,7,4,7)
-    b.print()
-    test = b.is_checked("W")
-    print(test)
 
-    print("legalmove")
-    test = b.legal_moves("W")
-    test.print()
+    print("board")
+    b.print()
+    b.check_for_field(3,7)
+    #b.move_from_to("B", 3,7,4,7)
+    #print("board2")
+    #b.print()
+    #print("")
+    #print("all moves for white ")
+    #b.check_for_field(4,0).print()
+
+    #print("")
+    #print("all moves for black ")
+    #test = b.all_moves("B")
+    #test.print()
 
 
     #b.move_from_to("W", 1,1 ,1,3)

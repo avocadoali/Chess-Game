@@ -122,11 +122,34 @@ class Board():
 
     #check allowed move if there is a piece on that field
     def check_for_field(self, pos_x, pos_y):
-        checked_board = []
+        checked_board = Board()
         if (self.board[pos_x][pos_y]).name!= "--":
             checked_board = (self.board[pos_x][pos_y].check(self.board))
 
         return checked_board
+
+    #shows if the king of specific color is currently checked
+    def is_checked(self, color ):
+
+        if color == "B":
+            checked_board = self.all_moves("W")
+
+            # check if black king is attacked(checked)
+            KB_pos_x = self.black_p[0].pos_x
+            KB_pos_y = self.black_p[0].pos_y
+
+            return checked_board.board[KB_pos_x][KB_pos_y].name == "XX"
+
+        else:
+            checked_board = self.all_moves("B")
+
+            # check if white king is attacked(checked)
+            KW_pos_x = self.white_p[0].pos_x
+            KW_pos_y = self.white_p[0].pos_y
+
+            return checked_board.board[KW_pos_x][KW_pos_y].name == "XX"
+
+
 
     #check allowed move if there is a piece on that field
     #but with external board
@@ -135,6 +158,17 @@ class Board():
         checked_board.board = copy.deepcopy(board)
         if (self.board[pos_x][pos_y]).name!= "--":
             checked_board = self.board[pos_x][pos_y].check(checked_board.board)
+
+        for x in reversed(range(8)):
+            y = 0
+            for row in (checked_board.board):
+                if "X" in row[x].name:
+                    print(x, y)
+                    y = y+1
+
+
+
+
 
         return checked_board
 
@@ -231,7 +265,7 @@ class Board():
     def is_checked(self, color ):
 
         if color == "B":
-            checked_board = self.legal_moves("W")
+            checked_board = self.all_moves("W")
 
             # check if black king is attacked(checked)
             KB_pos_x = self.black_p[0].pos_x
@@ -240,9 +274,7 @@ class Board():
             return checked_board.board[KB_pos_x][KB_pos_y].name == "XX"
 
         else:
-            checked_board = self.legal_moves("B")
-
-            checked_board.print()
+            checked_board = self.all_moves("B")
 
             # check if white king is attacked(checked)
             KW_pos_x = self.white_p[0].pos_x
@@ -251,15 +283,41 @@ class Board():
             return checked_board.board[KW_pos_x][KW_pos_y].name == "XX"
 
     #marks another board with all the legal move of specific color
-    def legal_moves(self, color):
+    def all_moves(self, color):
 
         # init temporary board
         checked_board = Board()
         checked_board.board = copy.deepcopy(self.board)
 
+        # decides which color should be checked
+        if color == "W":
+            # iterate through all pieces an check for all valid moves
+            for piece in self.white_p:
+                x = piece.pos_x
+                y = piece.pos_y
+                checked_board = self.check_for_field_two(x, y, checked_board.board)
+
+            return checked_board
+
+        else:
+            # iterate through all pieces an check for all valid moves
+            for piece in self.black_p:
+                x = piece.pos_x
+                y = piece.pos_y
+                checked_board = self.check_for_field_two(x, y, checked_board.board)
+
+            return checked_board
+
+        return checked_board
+
+    def legal_moves(self, color):
+        checked_board = Board()
+        checked_board.board = copy.deepcopy(self.board)
 
         # decides which color should be checked
         if color == "W":
+            black_fields = self.all_moves("B")
+
             # iterate through all pieces an check for all valid moves
             for piece in self.white_p:
                 x = piece.pos_x
