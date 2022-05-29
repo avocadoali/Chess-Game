@@ -133,21 +133,19 @@ Done:
 
 - take piece when en passant
 
+- check for king checks 
+
+- check for illegal moves when checked for that color
 ---
 
 Pending:
 
-- check for king checks 
-- check for illegal moves when checked for that color
 
+- userinputs (inteactive game)
 - change between black/white
-
-
 - end when no moves allowed
 
-
-
-- implement Game logic (Extra class)
+-> implement Game logic (Extra class)
     - iterate players
     - ask for moves
     - show possible moves
