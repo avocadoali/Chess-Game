@@ -33,23 +33,7 @@ class Board():
 
         ]
 
-        self.board = self.make_board_test()
-
-    def make_board_test(self):
-        board = []
-        empty_piece = Empty_P()
-        for r in range(8):
-            row = []
-            for c in range(8):
-                row.append(empty_piece)
-
-            board.append(row)
-
-        board[4][0] = self.white_p[0]
-        board[3][7] = self.black_p[1]
-
-        return board
-
+        self.board = self.make_board()
 
     def make_board(self):
         board = []
@@ -113,9 +97,7 @@ class Board():
         if self.board[piece.pos_x][piece.pos_y].name == "--":
             self.board[piece.pos_x][piece.pos_y] = piece 
         else:
-            print("")
             print("There is already another pieces")
-            print("")
 
         return self.board
 
@@ -149,26 +131,36 @@ class Board():
 
             return checked_board.board[KW_pos_x][KW_pos_y].name == "XX"
 
+    def check_for_field_b(self, pos_x, pos_y, b):
+        checked_board = Board()
+        checked_board.board = copy.deepcopy(b)
+        if (checked_board.board[pos_x][pos_y]).name!= "--":
+            checked_board = (checked_board.board[pos_x][pos_y].check(checked_board.board))
 
+        return checked_board
 
     #check allowed move if there is a piece on that field
     #but with external board
-    def check_for_field_two(self, pos_x, pos_y, board):
+    def legal_moves(self, pos_x, pos_y, b):
         checked_board = Board()
-        checked_board.board = copy.deepcopy(board)
-        if (self.board[pos_x][pos_y]).name!= "--":
+        checked_board.board = copy.deepcopy(b)
+
+        if self.board[pos_x][pos_y].name!= "--":
             checked_board = self.board[pos_x][pos_y].check(checked_board.board)
 
-        for x in reversed(range(8)):
-            y = 0
-            for row in (checked_board.board):
-                if "X" in row[x].name:
-                    print(x, y)
-                    y = y+1
+        color = self.board[pos_x][pos_y].color
 
-
-
-
+        for x in range(8):
+            for y in range(8):
+                if "X" in checked_board.board[x][y].name:
+                    #make move
+                    self.move_from_to(color, pos_x,pos_y, x,y)
+                    #check if is checked
+                    if self.is_checked(color):
+                        checked_board.board[x][y] = Empty_P()
+                        return checked_board
+                    #undo move
+                    self.move_from_to(color, x,y,pos_x,pos_y)
 
         return checked_board
 
@@ -266,7 +258,6 @@ class Board():
 
         if color == "B":
             checked_board = self.all_moves("W")
-
             # check if black king is attacked(checked)
             KB_pos_x = self.black_p[0].pos_x
             KB_pos_y = self.black_p[0].pos_y
@@ -295,7 +286,7 @@ class Board():
             for piece in self.white_p:
                 x = piece.pos_x
                 y = piece.pos_y
-                checked_board = self.check_for_field_two(x, y, checked_board.board)
+                checked_board = self.check_for_field_b(x, y,checked_board.board)
 
             return checked_board
 
@@ -304,35 +295,7 @@ class Board():
             for piece in self.black_p:
                 x = piece.pos_x
                 y = piece.pos_y
-                checked_board = self.check_for_field_two(x, y, checked_board.board)
-
-            return checked_board
-
-        return checked_board
-
-    def legal_moves(self, color):
-        checked_board = Board()
-        checked_board.board = copy.deepcopy(self.board)
-
-        # decides which color should be checked
-        if color == "W":
-            black_fields = self.all_moves("B")
-
-            # iterate through all pieces an check for all valid moves
-            for piece in self.white_p:
-                x = piece.pos_x
-                y = piece.pos_y
-                checked_board = self.check_for_field_two(x, y, checked_board.board)
-
-            return checked_board
-
-        else:
-            # iterate through all pieces an check for all valid moves
-            for piece in self.black_p:
-                x = piece.pos_x
-                y = piece.pos_y
-                checked_board = self.check_for_field_two(x, y, checked_board.board)
-
+                checked_board = self.check_for_field_b(x, y,checked_board.board)
             return checked_board
 
         return checked_board

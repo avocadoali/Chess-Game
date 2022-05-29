@@ -7,13 +7,17 @@ def main():
 
     print("board")
     b.print()
-    b.check_for_field(3,7)
-    #b.move_from_to("B", 3,7,4,7)
-    #print("board2")
-    #b.print()
+    b.move_from_to("W", 4,1,4,3)
+    b.move_from_to("B", 5,6,5,4)
+    b.move_from_to("B", 5,4,4,3)
+    b.move_from_to("W", 3,0,5,2)
+    print("")
+    b.print()
+
+    #b.all_moves("W").print()
     #print("")
-    #print("all moves for white ")
-    #b.check_for_field(4,0).print()
+    b.legal_moves(4,7,b.board).print()
+
 
     #print("")
     #print("all moves for black ")
