@@ -1,22 +1,26 @@
 #from game_logic.game_logic import Game
 from board.board import Board
+from game_logic.game_logic import Game
 from tqdm import tqdm
 
 def main():
-    b = Board()
+    game = Game()
 
-    print("board")
-    b.print()
-    b.move_from_to("W", 4,1,4,3)
-    b.move_from_to("B", 5,6,5,4)
-    b.move_from_to("B", 5,4,4,3)
-    b.move_from_to("W", 3,0,5,2)
-    print("")
-    b.print()
+    game.start()
+    #b = Board()
 
-    #b.all_moves("W").print()
+    #print("board")
+    #b.print()
+    #b.move_from_to("W", 4,1,4,3)
+    #b.move_from_to("B", 5,6,5,4)
+    #b.move_from_to("B", 5,4,4,3)
+    #b.move_from_to("W", 3,0,5,2)
     #print("")
-    b.legal_moves(4,7,b.board).print()
+    #b.print()
+
+    ##b.all_moves("W").print()
+    #print("")
+    #b.legal_moves(4,7,b.board).print()
 
 
     #print("")
