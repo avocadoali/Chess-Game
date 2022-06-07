@@ -17,7 +17,7 @@ class Game():
             print("")
 
             # ask what field user wants to play
-            from_pos = input("Enter field coordinates(x,y): ")
+            from_pos = input("Enter coordinates of a piece(x,y): ")
 
             # input to number[0] number[1]
             numbers = [int(x) for x in from_pos.split() if x.isnumeric()]
@@ -26,7 +26,7 @@ class Game():
             if len != 2 and not (numbers[0] >= 0 and numbers[0] <= 7 and numbers[1] >= 0 and numbers[1] <= 7):
                 print("")
                 print("Wrong coordinates")
-                p = input("Enter field coordinates(x,y): ")
+                p = input("Enter coordinates of a piece(x,y): ")
                 numbers = [int(x) for x in p.split() if x.isnumeric()]
                 print("")
 
@@ -39,7 +39,7 @@ class Game():
             self.board.check_for_field(x,y).print()
 
             # get coordinates where piece should be moved to
-            to_pos = input ("Enter field coordinates(x,y): ")
+            to_pos = input ("Enter coordinates where piece should be moved to(x,y): ")
 
             # input to number[0] number[1]
             numbers = [int(x) for x in to_pos.split() if x.isnumeric()]
@@ -49,7 +49,7 @@ class Game():
                 print("")
                 print(numbers)
                 print("Wrong")
-                p = input("Enter field coordinates(x,y:)")
+                p = input("Enter field coordinates where piece should be moved to(x,y:)")
                 numbers = [int(x) for x in p.split() if x.isnumeric()]
                 print("")
 
@@ -59,7 +59,6 @@ class Game():
 
             #move piece
             self.board.move_from_to(self.current_player , x,y, to_x, to_y)
-
 
             # switch player
             if self.current_player == "W":
