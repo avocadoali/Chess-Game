@@ -140,19 +140,14 @@ Done:
 
 Pending:
 
-
 - userinputs (inteactive game)
-- change between black/white
+  - check if right piece is taken 
+  - loop back if wrong move was made
+
 - end when no moves allowed
+- three times same position -> patt
 
--> implement Game logic (Extra class)
-    - iterate players
-    - ask for moves
-    - show possible moves
-    - three times same position -> patt
-
-
-
+- some kind of gui??
 
 
 # Sonstiges
